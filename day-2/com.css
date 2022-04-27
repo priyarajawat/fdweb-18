@@ -1,0 +1,7 @@
+#barbar{
+    display: flex;
+    justify-content: space-around;
+    font-size: 26px;
+    background-color: rgb(35, 211, 144);
+    padding:5px;
+}
