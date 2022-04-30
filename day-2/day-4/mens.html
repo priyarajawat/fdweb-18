@@ -296,7 +296,7 @@
      ;
       if (select == "HTL") {
         mensData.sort(function (a, b) {
-          return b.price - a.price;
+          return b.strikedoffprice - a.strikedoffprice;
         });
         ;
         display(mensData);
@@ -304,7 +304,7 @@
       }
       if (select == "LTH") {
         mensData.sort(function (a, b) {
-          return a.price - b.price;
+          return a.strikedoffprice - b.strikedoffprice;
         });
        
         display(mensData);
