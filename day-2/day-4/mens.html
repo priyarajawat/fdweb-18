@@ -23,6 +23,7 @@
     <div id="barbar">
         <div><a href="women.html">Women Page</a></div>
         <div><a href="mens.html">Men Page</a></div>
+        <div><a href="cart.html">cart</a></div>
     </div>
     <div id="mybox"></div>
 </body>
@@ -282,7 +283,12 @@
       strikedoffprice: 1799,
     },
   ];
-
+  
+  var cardData =JSON.parse(localStorage.getItem("cart")) || []
+  mens_products=document.querySelector("#mybox")
+  
+  function display(data){
+    mens_products.innerHTML=""
   mensData.map(function (el){
     var photo = document.createElement("div")
 
@@ -300,8 +306,23 @@ strike.innerText = el.strikedoffprice
 
 var btn = document.createElement("button")
 btn.textContent = "Add to Cart"
+btn.addEventListener("click",function(){
+      AddToCart(el)
+    })
 
 photo.append(navy,image,peice1,strike,btn)
 document.querySelector("#mybox").append(photo);
+
   })
+  }
+  display(mensData)
+
+function AddToCart(el){
+   console.log(el)
+  cardData.push(el);
+  localStorage.setItem("cart",JSON.stringify(cardData));
+  alert("Product Added Successfully")
+  
+}
+
 </script>

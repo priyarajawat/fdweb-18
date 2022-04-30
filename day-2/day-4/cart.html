@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>cart_page</title>
+<style>
+#container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 15px;
+}
+</style>
+</head>
+<body>
+   
+    <div id="total">
+        <h1>my cart</h1>
+        
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+
+var cartdata=JSON.parse(localStorage.getItem("cart"))||[]
+
+var total=cartdata.reduce(function(sum,elem,index){
+    return sum+elem.price
+},0)
+console.log(total)
+
+document.getElementById("total").append(total)
+
+
+
+
+
+
+mycart(cartdata)
+
+function mycart(cartdata){
+
+
+    cartdata.map(function(elem,index){
+    console.log(elem)
+
+  var container=document.getElementById("container")
+
+  var div=document.createElement("div")
+
+  var image=document.createElement("img")
+  image.src=elem.image_url;
+
+  var name=document.createElement("p")
+  name.innerText=elem.name;
+
+  var price=document.createElement("p")
+  price.innerText=elem.price
+
+  var button=document.createElement("button")
+  button.innerText="Remove"
+  button.addEventListener("click",function(){
+      RemoveFunction(elem,index)
+  })
+
+  div.append(image,name,price,button)
+  container.append(div)
+
+})
+}
+
+
+
+
+function  RemoveFunction(elem,index){
+    // console.log("remove")
+    
+    cartdata.splice(index,1)
+    console.log(cartdata)
+    localStorage.setItem("cart",JSON.stringify(cartdata))
+    window.location.reload()
+}
+
+</script>

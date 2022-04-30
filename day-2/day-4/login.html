@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="firstfile.html">Home</a></div>
+        <div><a href="login.html">login</a></div>
+        <div><a href="signup.html">signup</a></div>
+    </div>
+    <div id="needed">
+        <form id="container">
+            <label for="useremail">Username</label></br>
+            <input id="email" type="text" placeholder="Enter email here"></br>
+
+            <label for="password">Password</label></br>
+            <input id="password" type="text" placeholder="Enter pswrd here"></br>
+
+            <input type="submit" id="submit">
+
+        </form>
+     </div>
+</body>
+</html>
+<script>
+    // var form = document.querySelector("form");
+  var userdata =JSON.parse(localStorage.getItem("userdata"))||[]
+  
+
+
+  
+document.querySelector("#submit").addEventListener("click",myfunction)
+function myfunction(e){
+    event.preventDefault()
+  
+    var data={
+        email:document.getElementById("email").value,
+        password:document.getElementById("password").value,
+    }
+   
+    var count=0
+    for(var i=0;i<userdata.length;i++)
+    {
+        if((userdata[i].email==data.email) && (userdata[i].email==data.email))
+        {
+            alert("successfull login")
+            window.location.href="secondfile.html"
+            count++
+            break
+        }
+        if(count==0)
+        {
+            alert("invalid credential")
+        }
+    }
+   
+
+  
+ 
+
+}
+
+
+// var form = document.querySelector("form");
+
+
+//  form.addEventListener("submit",function(event){
+//      var data = {
+//          email:form.mail.value,
+//          password:form.password.value,
+//      }
+   
+
+//      if(userdata === null){
+//          alert("please create an account")
+//      }
+//      else if(userdata.email==data.mail && data.password==data.password)
+//      {
+//          alert("Sign in successful")
+//          window.location.href = "secondfile.html"
+//      }
+//      else 
+//      {
+//          alert("User Does Not Exist")
+//      }
+//  });
+
+ 
+  
+
+</script>
+ 

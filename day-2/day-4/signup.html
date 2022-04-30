@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <link rel="stylesheet" href="common.css">
+    
+</head>
+
+<body>
+    <div id="navbar">
+        <div><a href="firstfile.html">Home</a></div>
+        <div><a href="login.html">login</a></div>
+        <div><a href="signup.html">signup</a></div>
+
+    </div>
+    <div id="needed">
+   <form id="container">
+       <label for="username">Username</label></br>
+       <input id="name" type="text" placeholder="Enter name here"></br>
+
+       <label for="email">Email</label></br>
+       <input id="mail" type="text" placeholder="Enter mail here"></br>
+
+       <label for="password">Password</label></br>
+       <input id="password" type="text" placeholder="Enter pswrd here"></br>
+
+       <label for="address">Address</label></br>
+       <input id="adress" type="text" placeholder="Enter adress here"></br>
+
+       <input type="submit">
+
+   </form>
+</div>
+</body>
+</html>
+<script>
+    document
+    .querySelector("#container")
+    .addEventListener("submit",myfunction)
+
+    var arr =JSON.parse(localStorage.getItem("userdata"))||[]
+
+    function myfunction(){
+        event.preventDefault();
+
+        var obj ={
+            name:container.name.value,
+            email:container.mail.value,
+            password:container.password.value,
+            address:container.adress.value,
+        }
+        arr.push(obj);
+        localStorage.setItem("userdata",JSON.stringify(arr))   
+    }
+    
+</script>
