@@ -25,6 +25,11 @@
         <div><a href="mens.html">Men Page</a></div>
         <div><a href="cart.html">cart</a></div>
     </div>
+    <select id="price" onChange="priceSort()">
+      <option>Sort By price</option>
+      <option value="HTL">High to Low</option>
+      <option value="LTH">Low to High</option>
+    </select>
     <div id="mybox"></div>
 </body>
 </html>
@@ -285,6 +290,26 @@
   ];
   
   var cardData =JSON.parse(localStorage.getItem("cart")) || []
+
+  function priceSort() {
+      var select = document.querySelector("#price").value;
+     ;
+      if (select == "HTL") {
+        mensData.sort(function (a, b) {
+          return b.price - a.price;
+        });
+        ;
+        display(mensData);
+        
+      }
+      if (select == "LTH") {
+        mensData.sort(function (a, b) {
+          return a.price - b.price;
+        });
+       
+        display(mensData);
+      }
+    }
   mens_products=document.querySelector("#mybox")
   
   function display(data){
